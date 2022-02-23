@@ -210,7 +210,7 @@
         
                 //Use 660491 as magentoId
                 //Magento needs to edit this part
-                let mgnId = '{!$CurrentPage.parameters.mgnId}';
+                let mgnId = '';
                 if(mgnId && mgnId !== '') {
                     embedded_svc.settings.prepopulatedPrechatFields = {'FirstName':'mgnId:' + mgnId}; //Sets the auto-population of pre-chat form fields
                 }
