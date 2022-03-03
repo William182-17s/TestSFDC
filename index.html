@@ -4,14 +4,23 @@
     </head>
     <body>
 
+
+
 <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #000000;
-		font-family: "Arial", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #000000;
-	}
+    .embeddedServiceHelpButton .helpButton .uiButton {
+        font-family: "Arial", sans-serif;
+        font-family: "Arial", sans-serif;
+        border-radius: 50%;
+        min-width: 5em;
+        background-color: #000000;
+        outline: 1px solid #ffffff;
+        border-radius: 50%;
+        min-width: 5em;
+        width: 0em;
+    }
+    .embeddedServiceHelpButton .helpButton .uiButton:focus {
+        /*outline: 1px solid #000000;*/
+    }
 </style>
 
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
@@ -38,7 +47,7 @@
         if(mgnId && mgnId !== '') {
             embedded_svc.settings.prepopulatedPrechatFields = {'FirstName':'mgnId:' + mgnId}; //Sets the auto-population of pre-chat form fields
         }
-        
+
 		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
@@ -46,16 +55,16 @@
 		embedded_svc.settings.entryFeature = 'LiveAgent';
 
 		embedded_svc.init(
-			'https://kasanovadev2--casemgm2.my.salesforce.com',
-			'https://casemgm2-kasanova-dev2.cs100.force.com/HelpCenter',
+			'https://kasanova--test.my.salesforce.com',
+			'https://test-kasanovaexperience.cs189.force.com/HelpCenter',
 			gslbBaseURL,
-			'00D1x0000000taM',
+			'00D6E00000013mU',
 			'Chat_Team_Kasanova',
 			{
-				baseLiveAgentContentURL: 'https://c.la1-c1cs-fra.salesforceliveagent.com/content',
-				deploymentId: '5721x0000008PxI',
-				buttonId: '5731x0000008RZY',
-				baseLiveAgentURL: 'https://d.la1-c1cs-fra.salesforceliveagent.com/chat',
+				baseLiveAgentContentURL: 'https://c.la3-c1cs-cdg.salesforceliveagent.com/content',
+				deploymentId: '5727a00000001i0',
+				buttonId: '5737a00000001zg',
+				baseLiveAgentURL: 'https://d.la3-c1cs-cdg.salesforceliveagent.com/chat',
 				eswLiveAgentDevName: 'Chat_Team_Kasanova',
 				isOfflineSupportEnabled: false
 			}
@@ -64,7 +73,7 @@
 
 	if (!window.embedded_svc) {
 		var s = document.createElement('script');
-		s.setAttribute('src', 'https://kasanovadev2--casemgm2.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.setAttribute('src', 'https://kasanova--test.my.salesforce.com/embeddedservice/5.0/esw.min.js');
 		s.onload = function() {
 			initESW(null);
 		};
