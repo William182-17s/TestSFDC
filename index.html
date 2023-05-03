@@ -8,6 +8,7 @@
 	    <br>
 	    <div id="AppointmentHandler"></div>
 <script>
+	var instanceUrl = "https://fastweb01--agiledev.sandbox.my.salesforce.com";
 $Lightning.use("c:AppointmentTakingApp", function() {
         $Lightning.createComponent("c:appointmentHandler",
             { recordId : 'a1Z1x00000413RKEAY' },
@@ -17,8 +18,8 @@ $Lightning.use("c:AppointmentTakingApp", function() {
             }
         );
     }, 
-	"https://fastweb01--agiledev.sandbox.my.salesforce.com",
-	 "00D1x0000004MbY!ARAAQGu4kppbu3R1XZscYlo1PeCYnL7Ff3EeZnIUbGn2LK4qAkSlXQhFimXq8fzcJcxG54Wa1ezcQPtF6uKdSkoujhXHecIK"
+	instanceUrl,
+	 "Bearer 00D1x0000004MbY!ARAAQGu4kppbu3R1XZscYlo1PeCYnL7Ff3EeZnIUbGn2LK4qAkSlXQhFimXq8fzcJcxG54Wa1ezcQPtF6uKdSkoujhXHecIK"
 );
 </script>
     </body>
