@@ -9,7 +9,7 @@
 	    <div id="AppointmentHandler"></div>
 <script>
 	var instanceUrl = "https://fastweb01--agiledev.sandbox.my.salesforce.com";
-	console.log(readCookie("acToken"));
+	console.log(Cookies.get("example"));
 $Lightning.use("c:AppointmentTakingApp", function() {
         $Lightning.createComponent("c:appointmentHandler",
             { recordId : 'a1Z1x00000413RKEAY' },
