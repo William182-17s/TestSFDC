@@ -15,7 +15,7 @@
     			}
   		}
   		return "";
-	};
+	}
 	
 	var clientId = getCookie('clientId')
 	var accessToken = getCookie('accToken');
