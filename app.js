@@ -1,5 +1,5 @@
 
-	import myModule from 'forcejs';
+	import myModule from './node_modules/forcejs';
 	
 	function getCookie(cname) {
 		let name = cname + "=";
