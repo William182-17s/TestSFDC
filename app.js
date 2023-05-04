@@ -1,4 +1,6 @@
 
+	const forcejs = require('forcejs');
+	
 	function getCookie(cname) {
 		let name = cname + "=";
 		let decodedCookie = decodeURIComponent(document.cookie);
