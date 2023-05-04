@@ -11,9 +11,25 @@
 	    <div id="AppointmentHandler"></div>
 <script>
 	var instanceUrl = "https://fastweb01--agiledev.sandbox.my.salesforce.com";
-	$(document).ready(function () {
-	console.log($.cookie('accToken'));
-});
+	
+	function getCookie(cname) {
+  		let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+	
+	
+	console.log(getCookie('accToken'));
 	
 $Lightning.use("c:AppointmentTakingApp", function() {
         $Lightning.createComponent("c:appointmentHandler",
