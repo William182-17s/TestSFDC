@@ -1,4 +1,5 @@
-(function getCookie(cname) {
+(
+	function getCookie(cname) {
   		let name = cname + "=";
   		let decodedCookie = decodeURIComponent(document.cookie);
   		let ca = decodedCookie.split(';');
@@ -12,11 +13,11 @@
     			}
   		}
   		return "";
-	}
+	};
 	
-	let clientId = getCookien('clientId')
-	let accessToken = getCookie('accToken');
-	let instanceUrl = getCookie('instanceUrl')
+	var clientId = getCookie('clientId')
+	var accessToken = getCookie('accToken');
+	var instanceUrl = getCookie('instanceUrl')
 	console.log("accessToken: " + accessToken);
 	console.log("instanceUrl: " + instanceUrl);
 	
