@@ -3,6 +3,7 @@
 	<script src="https://fastweb01--agiledev.sandbox.my.salesforce.com/lightning/lightning.out.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="https://raw.githubusercontent.com/carhartl/jquery-cookie/master/src/jquery.cookie.js"></script>
+	<script type="text/javascript" src="https://raw.githubusercontent.com/ccoenraets/forcejs/master/dist/force.all.js"></script>
     </head>
     <body>
 	    ciao
@@ -14,24 +15,35 @@
 	
 	function getCookie(cname) {
   		let name = cname + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
-  for(let i = 0; i <ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
+  		let decodedCookie = decodeURIComponent(document.cookie);
+  		let ca = decodedCookie.split(';');
+  		for(let i = 0; i <ca.length; i++) {
+    			let c = ca[i];
+    			while (c.charAt(0) == ' ') {
+      				c = c.substring(1);
+    			}
+    			if (c.indexOf(name) == 0) {
+      				return c.substring(name.length, c.length);
+    			}
+  		}
+  		return "";
+	}
 	
+	let clientId = getCookien('clientId')
 	let accessToken = getCookie('accToken');
 	let instanceUrl = getCookie('instanceUrl')
 	console.log("accessToken: " + accessToken);
 	console.log("instanceUrl: " + instanceUrl);
+	
+	
+	let oauth = OAuth.createInstance(clientId
+                                ,"https://test.salesforce.com",
+                                "https://infinite-brushlands-64356.herokuapp.com/oauthcallback.html"
+                                );
+	oauth.login()
+    	.then(oauthResult => {
+        	console.log(oauthResult);
+    	});
 	
 $Lightning.use("c:AppointmentTakingApp", function() {
         $Lightning.createComponent("c:appointmentHandler",
