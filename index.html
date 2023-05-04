@@ -1,6 +1,7 @@
 <html>
     <head>
 <script src="https://fastweb01--agiledev.sandbox.my.site.com/myfastpage/lightning/lightning.out.js"></script>
+	    <script src="/path/to/jquery.cookie.js"></script>
     </head>
     <body>
 	    ciao
@@ -9,7 +10,7 @@
 	    <div id="AppointmentHandler"></div>
 <script>
 	var instanceUrl = "https://fastweb01--agiledev.sandbox.my.salesforce.com";
-	console.log(Cookies.get("example"));
+	console.log($.cookie('the_cookie'));
 $Lightning.use("c:AppointmentTakingApp", function() {
         $Lightning.createComponent("c:appointmentHandler",
             { recordId : 'a1Z1x00000413RKEAY' },
