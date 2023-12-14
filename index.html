@@ -10,6 +10,32 @@
 	    <div id="AppointmentHandler"></div>
     </body>
 	<script>
+var details = {
+    'username': 'apiersanti@fastweb.it.agiledev',
+    'password': 'bluefieldAgileDev062023mQ6XBkobUN4UhxgtNS2uhdRmd',
+    'grant_type': 'password',
+	'client_id': '3MVG9uAc45HBYUriLzgLaqctzgBb70nfEPdJnIGVYbNlEz1SR9gCBzoigVJU7UJwSRlvrzYayaaCKxgytbWjg',
+	'client_secret': '1804A545BE1855E4D984099614F30EAE5937181070C2BF24EE6F3662FD656B88'
+};
+
+var formBody = [];
+for (var property in details) {
+  var encodedKey = encodeURIComponent(property);
+  var encodedValue = encodeURIComponent(details[property]);
+  formBody.push(encodedKey + "=" + encodedValue);
+}
+formBody = formBody.join("&");
+	
+        const response = (await fetch(link, {
+            method: 'POST',
+            mode : "cors",
+		headers : {
+		"Content-Type": "application/x-www-form-urlencoded"
+		}
+ 	    body: formBody
+        }));
+
+	console.log(response);
 	//var instanceUrl = "https://fastweb01--agiledev.sandbox.my.salesforce.com";
 	$Lightning.use(
 		"c:AppointmentTakingApp", 
