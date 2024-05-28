@@ -3,6 +3,69 @@
     </head>
     <body>
 
+        <style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		// Settings for Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://maserati--devlex.sandbox.my.salesforce.com',
+			'https://maserati--devlex.sandbox.my.salesforce-sites.com/public',
+			gslbBaseURL,
+			'00D0D0000000PVK',
+			'Omnichannel_Chat',
+			{
+				baseLiveAgentContentURL: 'https://c.la1-c1cs-fra.salesforceliveagent.com/content',
+				deploymentId: '5722o000000Cmpn',
+				buttonId: '5732o0000008amr',
+				baseLiveAgentURL: 'https://d.la1-c1cs-fra.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I2o0000004HvXEAU_17c54f38019',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://maserati--devlex.sandbox.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
+
         <a id="liveagent_button_online_5732o0000008amr" href="javascript://Chat" style="display: none;" onclick="liveagent.startChat('5732o0000008amr')"><!-- Online Chat Content --></a><div id="liveagent_button_offline_5732o0000008amr" style="display: none;"><!-- Offline Chat Content --></div><script type="text/javascript">
 if (!window._laq) { window._laq = []; }
 window._laq.push(function(){liveagent.showWhenOnline('5732o0000008amr', document.getElementById('liveagent_button_online_5732o0000008amr'));
