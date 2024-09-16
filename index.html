@@ -16,15 +16,12 @@
       };
 
       function publishClickToDial() {
-            var matricola = document.getElementById("matricola").value;
-            var telefono = document.getElementById("telefono").value;
-            var codice = document.getElementById("codice").value;
             var message = {
                 type: "inteaction",
                 recordData : {
-                    matricola : matricola,
-                    telefono : telefono,
-                    cod_esito : codice
+                    matricola : 'matricola',
+                    telefono : 'telefono',
+                    cod_esito : 'codice'
                 }
             } 
             publishSampleMC(message);
