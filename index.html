@@ -2,7 +2,7 @@
 <head>
    <!-- Imports Open CTI JavaScript library. Point to a valid Salesforce domain.
 -->
-   <script src="https://domain:port/support/api/62.0/lightning/opencti_min.js"></script>
+   <script src="https://maserati--devlex.sandbox.lightning.force.com/support/api/62.0/lightning/opencti_min.js"></script>
    <script type="text/javascript">
       // Callback of API method: setSoftphonePanelHeight
       var setSoftphonePanelHeightCallback = function(response) {
@@ -14,12 +14,29 @@
                alert('setSoftphonePanelHeight failed.);
             }
       };
+
+      function publishClickToDial() {
+            var matricola = document.getElementById("matricola").value;
+            var telefono = document.getElementById("telefono").value;
+            var codice = document.getElementById("codice").value;
+            var message = {
+                type: "inteaction",
+                recordData : {
+                    matricola : matricola,
+                    telefono : telefono,
+                    cod_esito : codice
+                }
+            } 
+            publishSampleMC(message);
+        }; 
+      
       // Invokes API method: setSoftphonePanelHeight
       function setSoftphonePanelHeight() {
          sforce.opencti.setSoftphonePanelHeight({
             heightPX: 500,
             callback: setSoftphonePanelHeightCallback
          });
+         publishClickToDial();
       }
       // Callback of API method: setSoftphonePanelWidth
       var setSoftphonePanelWidthCallback = function(response) {
