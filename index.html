@@ -29,6 +29,19 @@
             } 
             publishSampleMC(message);
         }; 
+
+      var BARRA_MC_IN = "purecloud__ClientEvent__c";
+        var BARRA_MC_OUT = "purecloud__ClientEvent__c";
+        var BARRA_MC_IN_SUBSCRIPTION = null;
+
+        function publishSampleMC(message) {
+
+            sforce.opencti.publish({
+                channelName: BARRA_MC_OUT,
+                message: message,
+                callback: lightningMessageServiceCallback
+            });
+        };
       
       // Invokes API method: setSoftphonePanelHeight
       function setSoftphonePanelHeight() {
