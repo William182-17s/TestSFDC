@@ -1,118 +1,59 @@
 <html>
 <head>
-   <!-- Imports Open CTI JavaScript library. Point to a valid Salesforce domain.
--->
-   <script src="https://maserati--devlex.sandbox.lightning.force.com/support/api/62.0/lightning/opencti_min.js"></script>
-   <script type="text/javascript">
-      // Callback of API method: setSoftphonePanelHeight
-      var setSoftphonePanelHeightCallback = function(response) {
-            // Returns true if setSoftphonePanelHeight method is executed successfully, false otherwise
-            if (response.result) {
-               alert('setSoftphonePanelHeight is successfully executed.');
-            } 
-            else {
-               alert('setSoftphonePanelHeight failed.');
-            }
-      };
+    <!--https://apps.mypurecloud.com/crm/index.html?crm=salesforce&color=darkblue-->
 
-function lightningMessageServiceCallback(result) {
+    <!-- Imports Open CTI JavaScript library. Point to a valid Salesforce domain.-->
+    <script src="https://maserati--devlex.sandbox.lightning.force.com/support/api/62.0/lightning/opencti_min.js"></script>
+    <script type="text/javascript">
+
+        var BARRA_MC_IN = "purecloud__ClientEvent__c";
+        var BARRA_MC_OUT = "purecloud__ClientEvent__c";
+        var BARRA_MC_IN_SUBSCRIPTION = null;
+
+
+        function publishSampleMC(message) {
+            sforce.opencti.publish({
+                channelName: BARRA_MC_OUT,
+                message: message,
+                callback: lightningMessageServiceCallback()
+            });
+        };
+
+        function lightningMessageServiceCallback(result) {
             if (result.success) {
                 console.log('Success publish');
             } else {
-				console.log('Error: ' + result.errors);
+                console.log('Error: ' + result.errors);
             }
-        }
-      
-      function publishClickToDial() {
+        };
+
+        function startCall() {
             var message = {
-                type: "inteaction",
+                type: "interaction",
                 recordData : {
                     matricola : 'matricola',
                     telefono : 'telefono',
                     cod_esito : 'codice'
                 }
-            } 
+            }
             publishSampleMC(message);
-        }; 
+        }
 
-      var BARRA_MC_IN = "purecloud__ClientEvent__c";
-        var BARRA_MC_OUT = "purecloud__ClientEvent__c";
-        var BARRA_MC_IN_SUBSCRIPTION = null;
-
-        function publishSampleMC(message) {
-
-            sforce.opencti.publish({
-                channelName: BARRA_MC_OUT,
-                message: message,
-                callback: lightningMessageServiceCallback
-            });
-        };
-      
-      // Invokes API method: setSoftphonePanelHeight
-      function setSoftphonePanelHeight() {
-         sforce.opencti.setSoftphonePanelHeight({
-            heightPX: 500,
-            callback: setSoftphonePanelHeightCallback
-         });
-         publishClickToDial();
-      }
-      // Callback of API method: setSoftphonePanelWidth
-      var setSoftphonePanelWidthCallback = function(response) {
-            // Returns true if setSoftphonePanelWidth method is executed successfully, false otherwise
-            if (response.result) {
-               alert('setSoftphonePanelWidth is successfully executed.');
-            } 
-            else {
-               alert('setSoftphonePanelWidth failed.');
+        function endCall() {
+            var message = {
+                type: "interaction",
+                recordData : {
+                    matricola : 'matricola',
+                    telefono : 'telefono',
+                    cod_esito : 'codice'
+                }
             }
-      };
-      // Invokes API method: setSoftphonePanelWidth
-      function setSoftphonePanelWidth() {
-         sforce.opencti.setSoftphonePanelWidth({
-            widthPX: 500,
-            callback: setSoftphonePanelHeightCallback
-         });
-      }
-      // Callback of API method: setSoftphoneItemIcon
-      var setSoftphoneItemIconCallback = function(response) {
-            // Returns true if setSoftphoneItemIcon method is executed successfully, false otherwise
-            if (response.result) {
-               alert('setSoftphoneItemIcon is successfully executed.');
-            } 
-            else {
-               alert('setSoftphoneItemIcon failed.');
-            }
-      };
-      // Invokes API method: setSoftphoneItemIcon
-      function setSoftphoneItemIcon() {
-         sforce.opencti.setSoftphoneItemIcon({
-            key: 'call',
-            callback: setSoftphoneItemIconCallback
-         });
-      }
-      // Callback of API method: setSoftphoneItemLabel
-      var setSoftphoneItemLabelCallback = function(response) {
-            // Returns true if setSoftphoneItemLabel method is executed successfully, false otherwise
-            if (response.result) {
-               alert('setSoftphoneItemLabel is successfully executed.');
-            } 
-            else {
-               alert('setSoftphoneItemLabel failed.');
-            }
-      };
-      // Invokes API method: setSoftphoneItemLabel
-      function setSoftphoneItemLabel() {
-         sforce.opencti.setSoftphoneItemLabel({
-            Label: 'MySoftphone',
-            callback: setSoftphoneItemLabelCallback
-         });
-      }
-   </script>
+            publishSampleMC(message);
+        }
+    </script>
 </head>
 <body>
-   <button onclick="setSoftphonePanelHeight();">setSoftphonePanelHeight({heightPX:500})</button><br/>
-   <button onclick="setSoftphonePanelWidth();">setSoftphonePanelWidth({widthPX:500})</button><br/>
-   <button onclick="setSoftphoneItemIcon();">setSoftphoneItemIcon({key:'call'})</button><br/>
-   <button onclick="setSoftphoneItemLabel();">setSoftphoneItemLabel({label:'MySoftphone'})</button>
+    <button onclick="startCall();">Simula chiamata iniziata</button><br/>
+    <button onclick="endCall();">Simula chiamata finita</button><br/>
 </body>
 </html>
