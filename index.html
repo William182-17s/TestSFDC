@@ -101,7 +101,7 @@
             let phoneNumber = document.getElementById('phoneNumber').value;
             let category = document.getElementById('categories').value;
             let callType = document.getElementById('callTypes').value;
-            let stateIn = document.getElementById('states').value;
+            let state = document.getElementById('states').value;
             console.log('INTERACTION: ', phoneNumber);
             console.log('INTERACTION: ', category);
             console.log('INTERACTION: ', callType);
@@ -119,7 +119,7 @@
                     isConnected:false,
                     isDisconnected:true,
                     isDone:false,
-                    state: stateIn,
+                    state: state,
                     isCallback:false,
                     isDialer:false,
                     isChat:false,
@@ -152,8 +152,8 @@
     
     <label for="categories">Category:</label>
     <select name="categories" id="categories">
-        <option value="DIALING">add</option>
-        <option value="DIALING">disconnect</option>
+        <option value="disconnect">add</option>
+        <option value="disconnect">disconnect</option>
     </select>
     <br><br>
 
