@@ -96,13 +96,31 @@
             }
             publishSampleMC(message);
         }
+
+        function sendInteraction() {
+            let phoneNumber = document.getElementById('phoneNumber').value;
+            console.log('INTERACTION: ', phoneNumber);
+        }
     </script>
 </head>
 <body>
-    <label for="fname">First name:</label>
-    <input type="text" id="fname" name="fname"><br><br>
+    <label for="phoneNumber">PhoneNumber:</label>
+    <input type="text" id="phoneNumber" name="phoneNumber"><br>
+
+    <label for="callTypes">CallType:</label>
+    <select name="callTypes" id="callTypes">
+        <option value="Inbound">Inbound</option>
+    </select>
+
+    <label for="states">State:</label>
+    <select name="states" id="states">
+        <option value="DIALING">Dialing</option>
+        <option value="DIALING">ALERTING</option>
+        <option value="DIALING">DISCONNECTED</option>
+    </select>
     
-    </hr>
+    <hr>
+    <button onclick="sendInteraction();">Simula Interazione</button><br/>
     <button onclick="startCall();">Simula chiamata iniziata</button><br/>
     <button onclick="endCall();">Simula chiamata finita</button><br/>
 </body>
