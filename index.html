@@ -30,11 +30,6 @@
         function startCall() {
             var message = {
                 type: "Interaction",
-                recordData : {
-                    matricola : 'matricola',
-                    telefono : 'telefono',
-                    cod_esito : 'codice'
-                },
                 category: "add",
                 data: {
                     id: "b78c9624-b319-433b-8c16-9091e474c233",
@@ -68,11 +63,6 @@
         function endCall() {
             var message = {
                 type: "Interaction",
-                recordData : {
-                    matricola : 'matricola',
-                    telefono : 'telefono',
-                    cod_esito : 'codice'
-                },
                 category:"disconnect",
                 data:{
                     id:"10633d20-ff2f-4b44-bf3f-29f193116deb",
@@ -109,6 +99,10 @@
     </script>
 </head>
 <body>
+    <label for="fname">First name:</label>
+    <input type="text" id="fname" name="fname"><br><br>
+    
+    </hr>
     <button onclick="startCall();">Simula chiamata iniziata</button><br/>
     <button onclick="endCall();">Simula chiamata finita</button><br/>
 </body>
