@@ -99,18 +99,69 @@
 
         function sendInteraction() {
             let phoneNumber = document.getElementById('phoneNumber').value;
+            let category = document.getElementById('categories').value;
+            let callType = document.getElementById('callTypes').value;
+            let stateIn = document.getElementById('states').value;
             console.log('INTERACTION: ', phoneNumber);
+            console.log('INTERACTION: ', category);
+            console.log('INTERACTION: ', callType);
+            console.log('INTERACTION: ', state);
+
+            var message = {
+                type: "Interaction",
+                category: category,
+                data:{
+                    id:"10633d20-ff2f-4b44-bf3f-29f193116deb",
+                    connectedTime:"2024-09-25T14:30:07.370Z",
+                    endTime:"2024-09-25T14:40:19.961Z",
+                    phone:"tel:+393334750325",
+                    name:"+393334750325",
+                    isConnected:false,
+                    isDisconnected:true,
+                    isDone:false,
+                    state: stateIn,
+                    isCallback:false,
+                    isDialer:false,
+                    isChat:false,
+                    isEmail:false,
+                    isMessage:false,
+                    isVoicemail:false,
+                    remoteName:"+393334750325",
+                    recordingState:"active",
+                    securePause:false,
+                    displayAddress:"+393334750325",
+                    queueName:"IT_IT_MASE_MAS_RelCli_O_27300",
+                    ani:"+393334750325",
+                    calledNumber:"+390244412855",
+                    interactionDurationSeconds:613,
+                    totalIvrDurationSeconds:83,
+                    direction: callType,
+                    isInternal:false,
+                    startTime:"2024-09-25T14:28:44.016Z"
+                }
+            }
+
+            console.log(JSON.stringify(message));
         }
     </script>
 </head>
 <body>
     <label for="phoneNumber">PhoneNumber:</label>
-    <input type="text" id="phoneNumber" name="phoneNumber"><br>
+    <input type="text" id="phoneNumber" name="phoneNumber">
+    <br><br>
+    
+    <label for="categories">Category:</label>
+    <select name="categories" id="categories">
+        <option value="DIALING">add</option>
+        <option value="DIALING">disconnect</option>
+    </select>
+    <br><br>
 
     <label for="callTypes">CallType:</label>
     <select name="callTypes" id="callTypes">
         <option value="Inbound">Inbound</option>
     </select>
+    <br><br>
 
     <label for="states">State:</label>
     <select name="states" id="states">
@@ -118,6 +169,7 @@
         <option value="DIALING">ALERTING</option>
         <option value="DIALING">DISCONNECTED</option>
     </select>
+    <br><br>
     
     <hr>
     <button onclick="sendInteraction();">Simula Interazione</button><br/>
