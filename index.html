@@ -29,70 +29,25 @@
 
         function startCall() {
             var message = {
-                category: "add",
-                data: {
-                    id: "b78c9624-b319-433b-8c16-9091e474c233",
-                    phone: "tel:+393356263742",
-                    name: "+393356263742",
-                    isConnected: false,
-                    isDisconnected: false,
-                    isDone: false,
-                    state: "ALERTING",
-                    isCallback: false,
-                    isDialer: false,
-                    isChat: false,
-                    isEmail: false,
-                    isMessage: false,
-                    isVoicemail: false,
-                    remoteName: "+393356263742",
-                    recordingState: "active",
-                    securePause: false,
-                    displayAddress: "+393356263742",
-                    queueName: "IT_IT_MASE_MAS_RelCli_O_27300",
-                    ani: "+393356263742",
-                    calledNumber: "+390244412855",
-                    totalIvrDurationSeconds: 89,
-                    direction: "Inbound",
-                    isInternal: false
-                },
-                type:"Interaction"
+                type: "interaction",
+                recordData : {
+                    matricola : 'matricola',
+                    telefono : 'telefono',
+                    cod_esito : 'codice'
+                }
             }
             publishSampleMC(message);
         }
 
         function endCall() {
             var message = {
-                category:"disconnect",
-                data:{
-                    id:"10633d20-ff2f-4b44-bf3f-29f193116deb",
-                    connectedTime:"2024-09-25T14:30:07.370Z",
-                    endTime:"2024-09-25T14:40:19.961Z",
-                    phone:"tel:+393334750325",
-                    name:"+393334750325",
-                    isConnected:false,
-                    isDisconnected:true,
-                    isDone:false,
-                    state:"DISCONNECTED",
-                    isCallback:false,
-                    isDialer:false,
-                    isChat:false,
-                    isEmail:false,
-                    isMessage:false,
-                    isVoicemail:false,
-                    remoteName:"+393334750325",
-                    recordingState:"active",
-                    securePause":false,
-                    displayAddress:"+393334750325",
-                    queueName:"IT_IT_MASE_MAS_RelCli_O_27300",
-                    ani:"+393334750325",
-                    calledNumber:"+390244412855",
-                    interactionDurationSeconds:613,
-                    totalIvrDurationSeconds:83,
-                    direction:"Inbound",
-                    isInternal:false,
-                    startTime:"2024-09-25T14:28:44.016Z"
+                type: "interaction",
+                recordData : {
+                    matricola : 'matricola',
+                    telefono : 'telefono',
+                    cod_esito : 'codice'
                 },
-                type:"Interaction"
+                data:{}
             }
             publishSampleMC(message);
         }
