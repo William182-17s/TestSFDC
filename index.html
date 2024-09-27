@@ -10,6 +10,8 @@
         var BARRA_MC_OUT = "purecloud__ClientEvent__c";
         var BARRA_MC_IN_SUBSCRIPTION = null;
 
+        var interactionId = '';
+
 
         function publishSampleMC(message) {
             sforce.opencti.publish({
@@ -28,11 +30,13 @@
         };
 
         function sendAdd(phoneNumber, direction, state) {
+            interactionId = Date.now();
+
             var message = {
                 type: "Interaction",
                 category: "add",
                 data: {
-                    id: "b78c9624-b319-433b-8c16-9091e474c233",
+                    id: interactionId,
                     phone: "tel:+393356263742",
                     name: "+393356263742",
                     isConnected: false,
@@ -65,7 +69,7 @@
                 type: "Interaction",
                 category:"disconnect",
                 data:{
-                    id:"10633d20-ff2f-4b44-bf3f-29f193116deb",
+                    id: interactionId,
                     connectedTime:"2024-09-25T14:30:07.370Z",
                     endTime:"2024-09-25T14:40:19.961Z",
                     phone:"tel:+393334750325",
